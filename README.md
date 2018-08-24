@@ -1,2 +1,2 @@
-# kernel-sample
-RT-Thread kernel samples
+# RT-Thread Sample
+[这里介绍本类sample的情况]
