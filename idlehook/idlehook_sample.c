@@ -56,6 +56,8 @@ static void thread_entry(void *parameter)
         rt_thread_mdelay(500);
     }
     rt_kprintf("delete idle hook.\n");
+	
+	/* 删除空闲钩子函数 */
     rt_thread_idle_delhook(idle_hook);
     rt_kprintf("thread1 finish.\n");
 }

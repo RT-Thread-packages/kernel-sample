@@ -16,7 +16,6 @@
  * 线程2也会对2个number分别进行加1操作。使用互斥量保证2个number值保持一致
  */
 #include <rtthread.h>
-#define SAMPLE_USE_MUTEX  //打开该则使用互斥量保护线程1对number的操作
 
 #define THREAD_PRIORITY         8
 #define THREAD_TIMESLICE        5
@@ -32,21 +31,14 @@ static void rt_thread_entry1(void *parameter)
 {
       while(1)
       {
-          #ifdef SAMPLE_USE_MUTEX
           /* 线程1获取到互斥量后，先后对number1、number2进行加1操作，然后释放互斥量 */
-          rt_mutex_take(dynamic_mutex, RT_WAITING_FOREVER);
-          #endif
-          
+          rt_mutex_take(dynamic_mutex, RT_WAITING_FOREVER);          
           number1++;
           rt_thread_mdelay(10);
-          number2++;
-          
-          #ifdef SAMPLE_USE_MUTEX
+          number2++;          
           rt_mutex_release(dynamic_mutex);
-          #endif
        }	    
 }
-
 
 ALIGN(RT_ALIGN_SIZE)
 static char thread2_stack[1024];

@@ -16,7 +16,7 @@
  * 内存块
  */
 #include <rtthread.h>
-#include <rtdef.h>
+
 static rt_uint8_t *ptr[50];
 static rt_uint8_t mempool[4096];
 static struct rt_mempool mp;

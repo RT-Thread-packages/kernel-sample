@@ -39,7 +39,7 @@ static void rt_thread1_entry(void *parameter)
             return; 
         
         /* count每计数10次，就释放一次信号量 */
-         if(0 == (count%10))
+         if(0 == (count % 10))
         {
             rt_kprintf("t1 release a dynamic semaphore.\n" ); 
             rt_sem_release(dynamic_sem);            
