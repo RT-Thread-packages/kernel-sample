@@ -1,3 +1,4 @@
+
 from building import *
 Import('rtconfig')
 
@@ -7,52 +8,50 @@ group = []
 CPPPATH = []
 
 # add kernel samples.
-if GetDepend('RT_USING_SAMPLE_THREAD'):
-    src += ['thread/thread_sample.c']
+if GetDepend('KERNEL_SAMPLES_USING_THREAD'):
+    src += ['thread/*.c']
     CPPPATH += [cwd + '/thread']
 
-if GetDepend('RT_USING_SAMPLE_SEMAPHORE'):
-    src += ['semaphore/semaphore_sample.c']
-	src += ['semaphore/producer_consumer.c']
+if GetDepend('KERNEL_SAMPLES_USING_SEMAPHORE'):
+    src += Glob('semaphore/*.c')
     CPPPATH += [cwd + '/semaphore']
 
-if GetDepend('RT_USING_SAMPLE_MUTEX'):
-    src += ['mutex/mutex_sample.c']
-	src += ['mutex/pri_inversion.c']
+if GetDepend('KERNEL_SAMPLES_USING_MUTEX'):
+    src += Glob('mutex/*.c')
     CPPPATH += [cwd + '/mutex']
 
-if GetDepend('RT_USING_SAMPLE_MAILBOX'):
-    src += ['mailbox/mailbox_sample.c']
+if GetDepend('KERNEL_SAMPLES_USING_MAILBOX'):
+    src += Glob('mailbox/*.c')
     CPPPATH += [cwd + '/mailbox']
 
-if GetDepend('RT_USING_SAMPLE_EVENT'):
-    src += ['event/event_sample.c']
+if GetDepend('KERNEL_SAMPLES_USING_EVENT'):
+    src += Glob('event/*.c')
     CPPPATH += [cwd + '/event']
 
-if GetDepend('RT_USING_SAMPLE_MESSAGEQUEUE'):
-    src += ['msgq/msgq_sample.c']
+if GetDepend('KERNEL_SAMPLES_USING_MESSAGEQUEUE'):
+    src += Glob('msgq/*.c')
     CPPPATH += [cwd + '/msgq']
 
-if GetDepend('RT_USING_SAMPLE_TIMER'):
-    src += ['timer/timer_sample.c']
+if GetDepend('KERNEL_SAMPLES_USING_TIMER'):
+    src += Glob('timer/*.c')
     CPPPATH += [cwd + '/timer']
 
-if GetDepend('RT_USING_SAMPLE_HEAP'):
-    src += ['dynmem/dynmem_sample.c']
+if GetDepend('KERNEL_SAMPLES_USING_HEAP'):
+    src += Glob('dynmem/*.c')
     CPPPATH += [cwd + '/dynmem']
 
-if GetDepend('RT_USING_SAMPLE_MEMPOOL'):
-    src += ['mempool/memp_sample.c']
+if GetDepend('KERNEL_SAMPLES_USING_MEMPOOL'):
+    src += Glob('mempool/*.c')
     CPPPATH += [cwd + '/mempool']
 
-if GetDepend('RT_USING_SAMPLE_IDLEHOOK'):
-    src += ['idlehook/idlehook_sample.c']
+if GetDepend('KERNEL_SAMPLES_USING_IDLEHOOK'):
+    src += Glob('idlehook/*.c')
     CPPPATH += [cwd + '/idlehook']
 
-if GetDepend('RT_USING_SAMPLE_SIGNAL'):
-    src += ['signal/signal_sample.c']
+if GetDepend('KERNEL_SAMPLES_USING_SIGNAL'):
+    src += Glob('signal/*.c')
     CPPPATH += [cwd + '/signal']
-	
-group = DefineGroup('samples', src, depend = [''], CPPPATH = CPPPATH)
+
+group = DefineGroup('kernel-samples', src, depend = ['PKG_USING_KERNEL_SAMPLES'], CPPPATH = CPPPATH)
 
 Return('group')

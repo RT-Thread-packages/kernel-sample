@@ -67,8 +67,9 @@ int idle_hook_sample(void)
 
     /* 创建线程 */
     tid = rt_thread_create("thread1",
-                           thread_entry, RT_NULL, /* 线程入口是thread_entry, 入口参数是RT_NULL */
-                           THREAD_STACK_SIZE, THREAD_PRIORITY, THREAD_TIMESLICE);
+                           thread_entry, RT_NULL, 
+                           THREAD_STACK_SIZE, 
+						   THREAD_PRIORITY, THREAD_TIMESLICE);
     if (tid != RT_NULL)
     {
         rt_thread_startup(tid);

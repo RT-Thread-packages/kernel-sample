@@ -41,7 +41,7 @@ static void thread1_entry(void *parameter)
                 break;
             }
         }
-        /* 延时100ms */
+        /* 延时50ms */
         cnt++;
         rt_thread_mdelay(50);
     }
