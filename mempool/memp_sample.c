@@ -73,32 +73,20 @@ int mempool_sample(void)
     rt_mp_init(&mp, "mp1", &mempool[0], sizeof(mempool), 80);
 
     /* 创建线程1：申请内存池 */
-    tid1 = rt_thread_create("t1", thread1_mp_alloc, RT_NULL,
+    tid1 = rt_thread_create("thread1", thread1_mp_alloc, RT_NULL,
                             THREAD_STACK_SIZE,
                             THREAD_PRIORITY, THREAD_TIMESLICE);
     if (tid1 != RT_NULL)
-    {
         rt_thread_startup(tid1);
-    }
-    else
-    {
-        rt_kprintf("create t1 failed");
-        return -1;
-    }
+
 
     /* 创建线程2：释放内存池*/
-    tid2 = rt_thread_create("t2", thread2_mp_release, RT_NULL,
+    tid2 = rt_thread_create("thread2", thread2_mp_release, RT_NULL,
                             THREAD_STACK_SIZE,
                             THREAD_PRIORITY + 1, THREAD_TIMESLICE);
     if (tid2 != RT_NULL)
-    {
         rt_thread_startup(tid2);
-    }
-    else
-    {
-        rt_kprintf("create t2 failed");
-        return -1;
-    }
+
     return 0;
 }
 

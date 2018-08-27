@@ -53,20 +53,13 @@ int dynmem_sample(void)
     rt_thread_t tid;
 
     /* 创建线程1 */
-    tid = rt_thread_create("t1",
+    tid = rt_thread_create("thread1",
                            thread1_entry, RT_NULL,
                            THREAD_STACK_SIZE,
                            THREAD_PRIORITY,
                            THREAD_TIMESLICE);
     if (tid != RT_NULL)
-    {
         rt_thread_startup(tid);
-    }
-    else
-    {
-        rt_kprintf("create t1 failed");
-        return -1;
-    }
 
     return 0;
 }

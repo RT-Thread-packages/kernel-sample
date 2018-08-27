@@ -9,7 +9,7 @@ CPPPATH = []
 
 # add kernel samples.
 if GetDepend('KERNEL_SAMPLES_USING_THREAD'):
-    src += ['thread/*.c']
+    src += Glob['thread/*.c']
     CPPPATH += [cwd + '/thread']
 
 if GetDepend('KERNEL_SAMPLES_USING_SEMAPHORE'):
@@ -52,6 +52,10 @@ if GetDepend('KERNEL_SAMPLES_USING_SIGNAL'):
     src += Glob('signal/*.c')
     CPPPATH += [cwd + '/signal']
 
+if GetDepend('KERNEL_SAMPLES_USING_INTERRUPT'):
+    src += Glob('interrupt/*.c')
+    CPPPATH += [cwd + '/interrupt']
+	
 group = DefineGroup('kernel-samples', src, depend = ['PKG_USING_KERNEL_SAMPLES'], CPPPATH = CPPPATH)
 
 Return('group')

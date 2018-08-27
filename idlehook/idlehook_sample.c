@@ -56,8 +56,8 @@ static void thread_entry(void *parameter)
         rt_thread_mdelay(500);
     }
     rt_kprintf("delete idle hook.\n");
-	
-	/* 删除空闲钩子函数 */
+    
+    /* 删除空闲钩子函数 */
     rt_thread_idle_delhook(idle_hook);
     rt_kprintf("thread1 finish.\n");
 }
@@ -71,16 +71,10 @@ int idle_hook_sample(void)
     tid = rt_thread_create("thread1",
                            thread_entry, RT_NULL, 
                            THREAD_STACK_SIZE, 
-						   THREAD_PRIORITY, THREAD_TIMESLICE);
+                           THREAD_PRIORITY, THREAD_TIMESLICE);
     if (tid != RT_NULL)
-    {
         rt_thread_startup(tid);
-    }
-    else
-    {
-        rt_kprintf("create thread1 failed");
-        return -1;
-    }
+
     return 0;
 }
 
