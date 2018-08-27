@@ -20,10 +20,6 @@
 #define THREAD_STACK_SIZE       512
 #define THREAD_TIMESLICE        5
 
-/*
- * 为了在一个线程中访问另一个线程的控制块，所以把线程块指针中访问
- * 另一个线程的控制块，所以把线程块指针声明成全局类型以供全局访问
- */
 static rt_thread_t tid1 = RT_NULL;
 
 /* 线程1的信号处理函数 */
@@ -56,21 +52,13 @@ static void thread1_entry(void *parameter)
 int signal_sample(void)
 {
     /* 创建线程1 */
-    tid1 = rt_thread_create("t1",
+    tid1 = rt_thread_create("thread1",
                             thread1_entry, RT_NULL,
                             THREAD_STACK_SIZE,
                             THREAD_PRIORITY, THREAD_TIMESLICE);
-
-    if (tid1 != RT_NULL)
-    {
-        /* 如果获得线程控制块，启动这个线程 */
+    
+    if (tid1 != RT_NULL)       
         rt_thread_startup(tid1);
-    }
-    else
-    {
-        rt_kprintf("create t1 failed");
-        return -1;
-    }
 
     rt_thread_mdelay(300);
 

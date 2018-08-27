@@ -57,22 +57,15 @@ static void thread2_entry(void *param)
 /* 删除线程示例的初始化 */
 int thread_sample(void)
 {
-    /* 创建线程1，名称是t1，入口是thread1_entry*/
-    tid1 = rt_thread_create("t1",
+    /* 创建线程1，名称是thread1，入口是thread1_entry*/
+    tid1 = rt_thread_create("thread1",
                             thread1_entry, RT_NULL,
                             THREAD_STACK_SIZE,
                             THREAD_PRIORITY, THREAD_TIMESLICE);
     
     /* 如果获得线程控制块，启动这个线程 */
     if (tid1 != RT_NULL)
-    {
         rt_thread_startup(tid1);
-    }
-    else
-    {
-        rt_kprintf("create t1 failed");
-        return -1;
-    }
 
     /* 初始化线程2，名称是thread2，入口是thread2_entry */
     rt_thread_init(&thread2,

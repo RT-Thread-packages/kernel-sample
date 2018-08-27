@@ -43,32 +43,20 @@ int interrupt_sample(void)
     rt_thread_t thread;
 
     /* 创建t1线程 */
-    thread = rt_thread_create("t1", thread_entry, (void *)10,
+    thread = rt_thread_create("thread1", thread_entry, (void *)10,
                               THREAD_STACK_SIZE,
                               THREAD_PRIORITY, THREAD_TIMESLICE);
     if (thread != RT_NULL)
-    {
         rt_thread_startup(thread);
-    }
-    else
-    {
-        rt_kprintf("create t1 failed");
-        return -1;
-    }
+
 
     /* 创建t2线程 */
-    thread = rt_thread_create("t2", thread_entry, (void *)20,
+    thread = rt_thread_create("thread2", thread_entry, (void *)20,
                               THREAD_STACK_SIZE,
                               THREAD_PRIORITY, THREAD_TIMESLICE);
     if (thread != RT_NULL)
-    {
         rt_thread_startup(thread);
-    }
-    else
-    {
-        rt_kprintf("create t2 failed");
-        return -1;
-    }
+
     return 0;
 }
 
