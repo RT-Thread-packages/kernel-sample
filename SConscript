@@ -9,7 +9,7 @@ CPPPATH = []
 
 # add kernel samples.
 if GetDepend('KERNEL_SAMPLES_USING_THREAD'):
-    src += Glob['thread/*.c']
+    src += Glob('thread/*.c')
     CPPPATH += [cwd + '/thread']
 
 if GetDepend('KERNEL_SAMPLES_USING_SEMAPHORE'):
