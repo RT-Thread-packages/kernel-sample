@@ -98,7 +98,7 @@ static void thread2_entry(void *parameter)
 }
 
 /* 消息队列示例的初始化 */
-int messagequeue_sample()
+int msgq_sample(void)
 {
     rt_err_t result;
 
@@ -136,4 +136,4 @@ int messagequeue_sample()
 }
 
 /* 导出到 msh 命令列表中 */
-MSH_CMD_EXPORT(messagequeue_sample, messagequeue sample);
+MSH_CMD_EXPORT(msgq_sample, msgq sample);

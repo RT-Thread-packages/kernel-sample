@@ -41,7 +41,7 @@ static void thread_entry(void* parameter)
      }  
 }
 
-int timeslice_sample()
+int timeslice_sample(void)
 {
     rt_thread_t tid;
     /* 创建线程1 */
