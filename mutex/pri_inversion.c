@@ -30,7 +30,7 @@ static rt_mutex_t mutex = RT_NULL;
 
 #define THREAD_PRIORITY       10
 #define THREAD_STACK_SIZE     512
-#define THREAD_TIMESLICE    5
+#define THREAD_TIMESLICE      5
 
 /* 线程 1 入口 */
 static void thread1_entry(void *parameter)
@@ -95,9 +95,9 @@ static void thread3_entry(void *parameter)
         rt_kprintf("thread3 take a mutex, failed.\n");
     }
 
-    /* 做一个长时间的循环，总共 50 个 OS Tick */
+    /* 做一个长时间的循环，500ms */
     tick = rt_tick_get();
-    while (rt_tick_get() - tick < 50) ;
+    while (rt_tick_get() - tick < (RT_TICK_PER_SECOND / 2)) ;
 
     rt_mutex_release(mutex);
 }
@@ -143,4 +143,4 @@ int pri_inversion(void)
 }
 
 /* 导出到 msh 命令列表中 */
-MSH_CMD_EXPORT(pri_inversion, prio_inversion sample);
+MSH_CMD_EXPORT(pri_inversion, pri_inversion sample);
