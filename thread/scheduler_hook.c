@@ -38,15 +38,15 @@ static void thread_entry(void* parameter)
 static rt_thread_t tid1 = RT_NULL;
 static rt_thread_t tid2 = RT_NULL;
 
-static void scheduler_hook(struct rt_thread* from, struct rt_thread* to)
+static void hook_of_scheduler(struct rt_thread* from, struct rt_thread* to)
 {
     rt_kprintf("from: %s -->  to: %s \n", from->name , to->name);
 }
 
-int sch_hook_sample()
+int scheduler_hook(void)
 {   
     /* 设置调度器钩子 */
-    rt_scheduler_sethook(scheduler_hook);
+    rt_scheduler_sethook(hook_of_scheduler);
     
     /* 创建线程1 */
     tid1 = rt_thread_create("thread1", 
@@ -67,4 +67,4 @@ int sch_hook_sample()
 }
 
 /* 导出到 msh 命令列表中 */
-MSH_CMD_EXPORT(sch_hook_sample, sch_hook sample);
+MSH_CMD_EXPORT(scheduler_hook, scheduler_hook sample);
