@@ -4,22 +4,26 @@
 
 这个软件包包含了内核相关的使用示例代码。
 
-### 1.1 目录结构
+### 1.1 例程说明
 
-| 名称 | 说明 |
+| 文件 | 说明 |
 | ---- | ---- |
-| dynmem | 动态堆内存的使用 |
-| event  | 事件的使用 |
-| idlehook  | 空闲任务钩子的使用 |
-| interrupt | 使用开关中断进行线程间同步 |
-| mailbox | 邮箱的使用 |
-| mempool  | 内存池的使用 |
-| msgq | 消息队列的使用 |
-| mutex  | 互斥量的使用、防止优先级翻转特性 |
-| semaphore | 信号量的使用、生产者消费者模型 |
-| signal  | 信号的使用 |
-| thread | 线程的使用、线程优先级、线程时间片、调度器钩子 |
-| timer  | 定时器的使用 |
+| dynmem_sample.c | 动态堆内存的使用 |
+| event_sample.c  | 事件的使用 |
+| idlehook_sample.c  | 空闲任务钩子的使用 |
+| interrupt_sample.c | 使用开关中断进行线程间同步 |
+| mailbox_sample.c | 邮箱的使用 |
+| memp_sample.c  | 内存池的使用 |
+| msgq_sample.c | 消息队列的使用 |
+| mutex_sample.c  | 互斥量的使用 |
+| priority_inversion.c | 优先级翻转特性 |
+| producer_consumer.c | 生产者消费者模型 |
+| scheduler_hook.c | 调度器钩子的使用 |
+| semaphore_sample.c | 信号量的使用|
+| signal_sample.c  | 信号的使用 |
+| thread_sample.c | 线程的使用 |
+| timer_sample.c  | 定时器的使用 |
+| timeslice_sample.c  | 线程时间片 |
 
 ### 1.2 许可证
 
