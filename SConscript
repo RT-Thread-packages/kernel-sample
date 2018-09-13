@@ -1,61 +1,55 @@
-
 from building import *
-Import('rtconfig')
 
 src   = []
 cwd   = GetCurrentDir()
-group = []
-CPPPATH = []
+include_path = [cwd]
 
 # add kernel samples.
 if GetDepend('KERNEL_SAMPLES_USING_THREAD'):
-    src += Glob('thread/*.c')
-    CPPPATH += [cwd + '/thread']
+    src += ['thread_sample.c']
 
 if GetDepend('KERNEL_SAMPLES_USING_SEMAPHORE'):
-    src += Glob('semaphore/*.c')
-    CPPPATH += [cwd + '/semaphore']
+    src += ['semaphore_sample.c']
 
 if GetDepend('KERNEL_SAMPLES_USING_MUTEX'):
-    src += Glob('mutex/*.c')
-    CPPPATH += [cwd + '/mutex']
+    src += ['mutex_sample.c']
 
 if GetDepend('KERNEL_SAMPLES_USING_MAILBOX'):
-    src += Glob('mailbox/*.c')
-    CPPPATH += [cwd + '/mailbox']
+    src += ['mailbox_sample.c']
 
 if GetDepend('KERNEL_SAMPLES_USING_EVENT'):
-    src += Glob('event/*.c')
-    CPPPATH += [cwd + '/event']
+    src += ['event_sample.c']
 
 if GetDepend('KERNEL_SAMPLES_USING_MESSAGEQUEUE'):
-    src += Glob('msgq/*.c')
-    CPPPATH += [cwd + '/msgq']
+    src += ['msgq_sample.c']
 
 if GetDepend('KERNEL_SAMPLES_USING_TIMER'):
-    src += Glob('timer/*.c')
-    CPPPATH += [cwd + '/timer']
+    src += ['timer_sample.c']
 
 if GetDepend('KERNEL_SAMPLES_USING_HEAP'):
-    src += Glob('dynmem/*.c')
-    CPPPATH += [cwd + '/dynmem']
+    src += ['dynmem_sample.c']
 
 if GetDepend('KERNEL_SAMPLES_USING_MEMPOOL'):
-    src += Glob('mempool/*.c')
-    CPPPATH += [cwd + '/mempool']
+    src += ['memp_sample.c']
 
 if GetDepend('KERNEL_SAMPLES_USING_IDLEHOOK'):
-    src += Glob('idlehook/*.c')
-    CPPPATH += [cwd + '/idlehook']
+    src += ['idlehook_sample.c']
 
 if GetDepend('KERNEL_SAMPLES_USING_SIGNAL'):
-    src += Glob('signal/*.c')
-    CPPPATH += [cwd + '/signal']
+    src += ['signal_sample.c']
 
 if GetDepend('KERNEL_SAMPLES_USING_INTERRUPT'):
-    src += Glob('interrupt/*.c')
-    CPPPATH += [cwd + '/interrupt']
-	
-group = DefineGroup('kernel-samples', src, depend = ['PKG_USING_KERNEL_SAMPLES'], CPPPATH = CPPPATH)
+    src += ['interrupt_sample.c']
+
+if GetDepend('KERNEL_SAMPLES_USING_PRI_INVERSION'):
+    src += ['priority_inversion.c']
+
+if GetDepend('KERNEL_SAMPLES_USING_TIME_SLICE'):
+    src += ['timeslice_sample.c']
+
+if GetDepend('KERNEL_SAMPLES_USING_SCHEDULER_HOOK'):
+    src += ['scheduler_hook.c']
+
+group = DefineGroup('kernel-samples', src, depend = ['PKG_USING_KERNEL_SAMPLES'], CPPPATH = include_path)
 
 Return('group')
