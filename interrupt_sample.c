@@ -37,7 +37,6 @@ void thread_entry(void *parameter)
     }
 }
 
-/* 用户应用程序入口 */
 int interrupt_sample(void)
 {
     rt_thread_t thread;
@@ -48,7 +47,6 @@ int interrupt_sample(void)
                               THREAD_PRIORITY, THREAD_TIMESLICE);
     if (thread != RT_NULL)
         rt_thread_startup(thread);
-
 
     /* 创建t2线程 */
     thread = rt_thread_create("thread2", thread_entry, (void *)20,

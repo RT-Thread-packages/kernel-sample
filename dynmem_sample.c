@@ -50,7 +50,7 @@ void thread1_entry(void *parameter)
 
 int dynmem_sample(void)
 {
-    rt_thread_t tid;
+    rt_thread_t tid = RT_NULL;
 
     /* 创建线程1 */
     tid = rt_thread_create("thread1",
@@ -63,5 +63,6 @@ int dynmem_sample(void)
 
     return 0;
 }
+
 /* 导出到 msh 命令列表中 */
 MSH_CMD_EXPORT(dynmem_sample, dynmem sample);

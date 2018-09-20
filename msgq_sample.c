@@ -16,6 +16,9 @@
  */
 #include <rtthread.h>
 
+#define THREAD_PRIORITY      25
+#define THREAD_TIMESLICE     5
+
 /* 消息队列控制块 */
 static struct rt_messagequeue mq;
 /* 消息队列中用到的放置消息的内存池 */
@@ -24,6 +27,7 @@ static rt_uint8_t msg_pool[2048];
 ALIGN(RT_ALIGN_SIZE)
 static char thread1_stack[1024];
 static struct rt_thread thread1;
+
 /* 线程1入口函数 */
 static void thread1_entry(void *parameter)
 {
@@ -52,6 +56,7 @@ static void thread1_entry(void *parameter)
 ALIGN(RT_ALIGN_SIZE)
 static char thread2_stack[1024];
 static struct rt_thread thread2;
+
 /* 线程2入口 */
 static void thread2_entry(void *parameter)
 {
@@ -121,7 +126,8 @@ int msgq_sample(void)
                    thread1_entry,
                    RT_NULL,
                    &thread1_stack[0],
-                   sizeof(thread1_stack), 25, 5);
+                   sizeof(thread1_stack), 
+                   THREAD_PRIORITY, THREAD_TIMESLICE);
     rt_thread_startup(&thread1);
 
     rt_thread_init(&thread2,
@@ -129,7 +135,8 @@ int msgq_sample(void)
                    thread2_entry,
                    RT_NULL,
                    &thread2_stack[0],
-                   sizeof(thread2_stack), 25, 5);
+                   sizeof(thread2_stack), 
+                   THREAD_PRIORITY, THREAD_TIMESLICE);
     rt_thread_startup(&thread2);
 
     return 0;

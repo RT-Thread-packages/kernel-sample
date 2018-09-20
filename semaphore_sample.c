@@ -107,6 +107,7 @@ int semaphore_sample()
 
     return 0;
 }
+
 /* 导出到 msh 命令列表中 */
 MSH_CMD_EXPORT(semaphore_sample, semaphore sample);
 
