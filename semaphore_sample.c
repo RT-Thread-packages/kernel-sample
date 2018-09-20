@@ -41,7 +41,7 @@ static void rt_thread1_entry(void *parameter)
         /* count每计数10次，就释放一次信号量 */
          if(0 == (count % 10))
         {
-            rt_kprintf("t1 release a dynamic semaphore.\n" ); 
+            rt_kprintf("thread1 release a dynamic semaphore.\n" ); 
             rt_sem_release(dynamic_sem);            
         }
     }
@@ -60,14 +60,14 @@ static void rt_thread2_entry(void *parameter)
         result = rt_sem_take(dynamic_sem, RT_WAITING_FOREVER);
         if (result != RT_EOK)
         {        
-            rt_kprintf("t2 take a dynamic semaphore, failed.\n");
+            rt_kprintf("thread2 take a dynamic semaphore, failed.\n");
             rt_sem_delete(dynamic_sem);
             return;
         }
         else
         {      
             number++;             
-            rt_kprintf("t2 take a dynamic semaphore. number = %d\n" ,number);                        
+            rt_kprintf("thread2 take a dynamic semaphore. number = %d\n" ,number);                        
         }
     }   
 }
