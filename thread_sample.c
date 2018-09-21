@@ -9,10 +9,10 @@
  */ 
 
 /*
- * 程序清单：创建/删除、初始化线程
+ * 程序清单：创建、初始化/脱离线程
  *
  * 这个例子会创建两个线程，一个动态线程，一个静态线程。
- * 一个线程在运行完毕后自动被系统删除，另一个线程一直打印计数。
+ * 静态线程在运行完毕后自动被系统脱离，动态线程一直打印计数。
  */
 #include <rtthread.h>
 
@@ -38,6 +38,7 @@ static void thread1_entry(void *parameter)
 ALIGN(RT_ALIGN_SIZE)
 static char thread2_stack[1024];
 static struct rt_thread thread2;
+
 /* 线程2入口 */
 static void thread2_entry(void *param)
 {
@@ -54,7 +55,7 @@ static void thread2_entry(void *param)
     (线程控制块和线程栈依然在idle线程中释放) */
 }
 
-/* 删除线程示例的初始化 */
+/* 线程示例 */
 int thread_sample(void)
 {
     /* 创建线程1，名称是thread1，入口是thread1_entry*/

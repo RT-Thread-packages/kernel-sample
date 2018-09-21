@@ -56,7 +56,6 @@ static void thread1_recv_event(void *param)
     rt_kprintf("thread1 leave.\n");
 }
 
-
 ALIGN(RT_ALIGN_SIZE)
 static char thread2_stack[1024];
 static struct rt_thread thread2;

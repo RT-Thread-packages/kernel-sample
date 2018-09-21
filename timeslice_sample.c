@@ -43,7 +43,7 @@ static void thread_entry(void* parameter)
 
 int timeslice_sample(void)
 {
-    rt_thread_t tid;
+    rt_thread_t tid = RT_NULL;
     /* 创建线程1 */
     tid = rt_thread_create("thread1", 
                             thread_entry, (void*)1, 
@@ -52,7 +52,6 @@ int timeslice_sample(void)
     if (tid != RT_NULL) 
         rt_thread_startup(tid);
 
-
     /* 创建线程2 */
     tid = rt_thread_create("thread2", 
                             thread_entry, (void*)2,
@@ -60,6 +59,7 @@ int timeslice_sample(void)
                             THREAD_PRIORITY, THREAD_TIMESLICE-5);
     if (tid != RT_NULL) 
         rt_thread_startup(tid);
+        
     return 0;
 }
 

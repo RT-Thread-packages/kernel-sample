@@ -27,7 +27,6 @@ static rt_thread_t tid2 = RT_NULL;
 static rt_thread_t tid3 = RT_NULL;
 static rt_mutex_t mutex = RT_NULL;
 
-
 #define THREAD_PRIORITY       10
 #define THREAD_STACK_SIZE     512
 #define THREAD_TIMESLICE      5
@@ -66,7 +65,6 @@ static void thread2_entry(void *parameter)
 
     /* 先让低优先级线程运行 */
     rt_thread_mdelay(50);
-
 
     /*
      * 试图持有互斥锁，此时 thread3 持有，应把 thread3 的优先级提升

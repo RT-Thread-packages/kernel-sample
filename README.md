@@ -16,7 +16,7 @@
 | memp_sample.c  | 内存池的使用 |
 | msgq_sample.c | 消息队列的使用 |
 | mutex_sample.c  | 互斥量的使用 |
-| priority_inversion.c | 优先级翻转特性 |
+| priority_inversion.c | 互斥量解决优先级翻转问题 |
 | producer_consumer.c | 生产者消费者模型 |
 | scheduler_hook.c | 调度器钩子的使用 |
 | semaphore_sample.c | 信号量的使用|
