@@ -10,6 +10,7 @@ if GetDepend('KERNEL_SAMPLES_USING_THREAD'):
 
 if GetDepend('KERNEL_SAMPLES_USING_SEMAPHORE'):
     src += ['semaphore_sample.c']
+    src += ['producer_consumer.c']
 
 if GetDepend('KERNEL_SAMPLES_USING_MUTEX'):
     src += ['mutex_sample.c']
