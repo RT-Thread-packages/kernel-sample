@@ -50,6 +50,9 @@ if GetDepend('KERNEL_SAMPLES_USING_TIME_SLICE'):
 if GetDepend('KERNEL_SAMPLES_USING_SCHEDULER_HOOK'):
     src += ['scheduler_hook.c']
 
+if GetDepend('KERNEL_SAMPLES_USING_PRODUCER_CONSUMER'):
+    src += ['producer_consumer.c']
+
 group = DefineGroup('kernel-samples', src, depend = ['PKG_USING_KERNEL_SAMPLES'], CPPPATH = include_path)
 
 Return('group')
