@@ -48,7 +48,8 @@ int timer_sample(void)
                              RT_TIMER_FLAG_PERIODIC);
 
     /* 启动定时器1 */
-    if (timer1 != RT_NULL) rt_timer_start(timer1);
+    if (timer1 != RT_NULL) 
+        rt_timer_start(timer1);
 
     /* 创建定时器2 单次定时器 */
     timer2 = rt_timer_create("timer2", timeout2,
@@ -56,7 +57,9 @@ int timer_sample(void)
                              RT_TIMER_FLAG_ONE_SHOT);
 
     /* 启动定时器2 */
-    if (timer2 != RT_NULL) rt_timer_start(timer2);
+    if (timer2 != RT_NULL) 
+        rt_timer_start(timer2);
+        
     return 0;
 }
 

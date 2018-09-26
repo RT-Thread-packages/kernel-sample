@@ -113,14 +113,7 @@ int producer_consumer(void)
                                     THREAD_STACK_SIZE,
                                     THREAD_PRIORITY - 1, THREAD_TIMESLICE);
     if (producer_tid != RT_NULL)
-    {
         rt_thread_startup(producer_tid);
-    }
-    else
-    {
-        rt_kprintf("create thread producer failed");
-        return -1;
-    }
 
     /* 创建消费者线程 */
     consumer_tid = rt_thread_create("consumer",
@@ -128,14 +121,7 @@ int producer_consumer(void)
                                     THREAD_STACK_SIZE,
                                     THREAD_PRIORITY + 1, THREAD_TIMESLICE);
     if (consumer_tid != RT_NULL)
-    {
         rt_thread_startup(consumer_tid);
-    }
-    else
-    {
-        rt_kprintf("create thread consumer failed");
-        return -1;
-    }
 
     return 0;
 }

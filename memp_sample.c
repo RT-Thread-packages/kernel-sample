@@ -79,7 +79,6 @@ int mempool_sample(void)
     if (tid1 != RT_NULL)
         rt_thread_startup(tid1);
 
-
     /* 创建线程2：释放内存池*/
     tid2 = rt_thread_create("thread2", thread2_mp_release, RT_NULL,
                             THREAD_STACK_SIZE,
