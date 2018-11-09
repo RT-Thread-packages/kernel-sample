@@ -51,8 +51,8 @@ static void thread2_entry(void *param)
         rt_kprintf("thread2 count: %d\n", count);
     }
     rt_kprintf("thread2 exit\n");
-    /* 线程2运行结束后也将自动被系统删除
-    (线程控制块和线程栈依然在idle线程中释放) */
+	
+    /* 线程2运行结束后也将自动被系统脱离 */
 }
 
 /* 线程示例 */
