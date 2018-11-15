@@ -39,7 +39,7 @@ static void thread1_entry(void *parameter)
 
     /* 此时 thread3 持有 mutex，并且 thread2 等待持有 mutex */
 
-    /* 检查 rt_kprintf("the producer generates a number: %d\n", array[set%MAXSEM]); 与 thread3 的优先级情况 */
+    /* 检查 thread2 与 thread3 的优先级情况 */
     if (tid2->current_priority != tid3->current_priority)
     {
         /* 优先级不相同，测试失败 */
