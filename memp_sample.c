@@ -1,12 +1,12 @@
-/* 
- * Copyright (c) 2006-2018, RT-Thread Development Team 
- * 
- * SPDX-License-Identifier: Apache-2.0 
- * 
- * Change Logs: 
- * Date           Author       Notes 
- * 2018-08-24     yangjie      the first version 
- */ 
+/*
+ * Copyright (c) 2006-2018, RT-Thread Development Team
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Change Logs:
+ * Date           Author       Notes
+ * 2018-08-24     yangjie      the first version
+ */
 
 /*
  * 程序清单：内存池例程

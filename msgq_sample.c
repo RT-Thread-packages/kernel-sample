@@ -1,12 +1,12 @@
-/* 
- * Copyright (c) 2006-2018, RT-Thread Development Team 
- * 
- * SPDX-License-Identifier: Apache-2.0 
- * 
- * Change Logs: 
- * Date           Author       Notes 
- * 2018-08-24     yangjie      the first version 
- */ 
+/*
+ * Copyright (c) 2006-2018, RT-Thread Development Team
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Change Logs:
+ * Date           Author       Notes
+ * 2018-08-24     yangjie      the first version
+ */
 
 /*
  * 程序清单：消息队列例程
@@ -61,9 +61,9 @@ static struct rt_thread thread2;
 static void thread2_entry(void *parameter)
 {
     int result;
-    char buf = 'A';    
+    char buf = 'A';
     rt_uint8_t cnt = 0;
-    
+
     while (1)
     {
         if (cnt == 8)
@@ -126,7 +126,7 @@ int msgq_sample(void)
                    thread1_entry,
                    RT_NULL,
                    &thread1_stack[0],
-                   sizeof(thread1_stack), 
+                   sizeof(thread1_stack),
                    THREAD_PRIORITY, THREAD_TIMESLICE);
     rt_thread_startup(&thread1);
 
@@ -135,7 +135,7 @@ int msgq_sample(void)
                    thread2_entry,
                    RT_NULL,
                    &thread2_stack[0],
-                   sizeof(thread2_stack), 
+                   sizeof(thread2_stack),
                    THREAD_PRIORITY, THREAD_TIMESLICE);
     rt_thread_startup(&thread2);
 
