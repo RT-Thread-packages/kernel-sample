@@ -1,12 +1,12 @@
-/* 
- * Copyright (c) 2006-2018, RT-Thread Development Team 
- * 
- * SPDX-License-Identifier: Apache-2.0 
- * 
- * Change Logs: 
- * Date           Author       Notes 
- * 2018-08-24     yangjie      the first version 
- */ 
+/*
+ * Copyright (c) 2006-2018, RT-Thread Development Team
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Change Logs:
+ * Date           Author       Notes
+ * 2018-08-24     yangjie      the first version
+ */
 
 /*
 * 程序清单：定时器例程
@@ -48,7 +48,7 @@ int timer_sample(void)
                              RT_TIMER_FLAG_PERIODIC);
 
     /* 启动定时器1 */
-    if (timer1 != RT_NULL) 
+    if (timer1 != RT_NULL)
         rt_timer_start(timer1);
 
     /* 创建定时器2 单次定时器 */
@@ -57,9 +57,9 @@ int timer_sample(void)
                              RT_TIMER_FLAG_ONE_SHOT);
 
     /* 启动定时器2 */
-    if (timer2 != RT_NULL) 
+    if (timer2 != RT_NULL)
         rt_timer_start(timer2);
-        
+
     return 0;
 }
 

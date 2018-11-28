@@ -1,12 +1,12 @@
-/* 
- * Copyright (c) 2006-2018, RT-Thread Development Team 
- * 
- * SPDX-License-Identifier: Apache-2.0 
- * 
- * Change Logs: 
- * Date           Author       Notes 
- * 2018-08-24     yangjie      the first version 
- */ 
+/*
+ * Copyright (c) 2006-2018, RT-Thread Development Team
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Change Logs:
+ * Date           Author       Notes
+ * 2018-08-24     yangjie      the first version
+ */
 
 /*
  * 程序清单：创建、初始化/脱离线程
@@ -51,7 +51,7 @@ static void thread2_entry(void *param)
         rt_kprintf("thread2 count: %d\n", count);
     }
     rt_kprintf("thread2 exit\n");
-	
+
     /* 线程2运行结束后也将自动被系统脱离 */
 }
 
@@ -63,7 +63,7 @@ int thread_sample(void)
                             thread1_entry, RT_NULL,
                             THREAD_STACK_SIZE,
                             THREAD_PRIORITY, THREAD_TIMESLICE);
-    
+
     /* 如果获得线程控制块，启动这个线程 */
     if (tid1 != RT_NULL)
         rt_thread_startup(tid1);

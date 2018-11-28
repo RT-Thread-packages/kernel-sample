@@ -1,12 +1,12 @@
-/* 
- * Copyright (c) 2006-2018, RT-Thread Development Team 
- * 
- * SPDX-License-Identifier: Apache-2.0 
- * 
- * Change Logs: 
- * Date           Author       Notes 
- * 2018-08-24     yangjie      the first version 
- */  
+/*
+ * Copyright (c) 2006-2018, RT-Thread Development Team
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Change Logs:
+ * Date           Author       Notes
+ * 2018-08-24     yangjie      the first version
+ */
 
 /*
  * 程序清单：空闲任务钩子例程
@@ -56,7 +56,7 @@ static void thread_entry(void *parameter)
         rt_thread_mdelay(500);
     }
     rt_kprintf("delete idle hook.\n");
-    
+
     /* 删除空闲钩子函数 */
     rt_thread_idle_delhook(idle_hook);
     rt_kprintf("thread1 finish.\n");
@@ -69,8 +69,8 @@ int idle_hook_sample(void)
 
     /* 创建线程 */
     tid = rt_thread_create("thread1",
-                           thread_entry, RT_NULL, 
-                           THREAD_STACK_SIZE, 
+                           thread_entry, RT_NULL,
+                           THREAD_STACK_SIZE,
                            THREAD_PRIORITY, THREAD_TIMESLICE);
     if (tid != RT_NULL)
         rt_thread_startup(tid);

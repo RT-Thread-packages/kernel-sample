@@ -1,12 +1,12 @@
-/* 
- * Copyright (c) 2006-2018, RT-Thread Development Team 
- * 
- * SPDX-License-Identifier: Apache-2.0 
- * 
- * Change Logs: 
- * Date           Author       Notes 
- * 2018-08-24     yangjie      the first version 
- */ 
+/*
+ * Copyright (c) 2006-2018, RT-Thread Development Team
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Change Logs:
+ * Date           Author       Notes
+ * 2018-08-24     yangjie      the first version
+ */
 
 /*
  * 程序清单：信号量例程
@@ -28,21 +28,21 @@ static struct rt_thread thread1;
 static void rt_thread1_entry(void *parameter)
 {
     static rt_uint8_t count = 0;
-  
-    while(1)
+
+    while (1)
     {
-        if(count <= 100)
+        if (count <= 100)
         {
-            count++;           
+            count++;
         }
         else
-            return; 
-        
+            return;
+
         /* count每计数10次，就释放一次信号量 */
-         if(0 == (count % 10))
+        if (0 == (count % 10))
         {
-            rt_kprintf("thread1 release a dynamic semaphore.\n" ); 
-            rt_sem_release(dynamic_sem);            
+            rt_kprintf("thread1 release a dynamic semaphore.\n");
+            rt_sem_release(dynamic_sem);
         }
     }
 }
@@ -54,22 +54,22 @@ static void rt_thread2_entry(void *parameter)
 {
     static rt_err_t result;
     static rt_uint8_t number = 0;
-    while(1)
+    while (1)
     {
         /* 永久方式等待信号量，获取到信号量，则执行number自加的操作 */
         result = rt_sem_take(dynamic_sem, RT_WAITING_FOREVER);
         if (result != RT_EOK)
-        {        
+        {
             rt_kprintf("thread2 take a dynamic semaphore, failed.\n");
             rt_sem_delete(dynamic_sem);
             return;
         }
         else
-        {      
-            number++;             
-            rt_kprintf("thread2 take a dynamic semaphore. number = %d\n" ,number);                        
+        {
+            number++;
+            rt_kprintf("thread2 take a dynamic semaphore. number = %d\n", number);
         }
-    }   
+    }
 }
 
 /* 信号量示例的初始化 */
@@ -92,17 +92,17 @@ int semaphore_sample()
                    rt_thread1_entry,
                    RT_NULL,
                    &thread1_stack[0],
-                   sizeof(thread1_stack), 
+                   sizeof(thread1_stack),
                    THREAD_PRIORITY, THREAD_TIMESLICE);
     rt_thread_startup(&thread1);
-                   
+
     rt_thread_init(&thread2,
                    "thread2",
                    rt_thread2_entry,
                    RT_NULL,
                    &thread2_stack[0],
-                   sizeof(thread2_stack), 
-                   THREAD_PRIORITY-1, THREAD_TIMESLICE);
+                   sizeof(thread2_stack),
+                   THREAD_PRIORITY - 1, THREAD_TIMESLICE);
     rt_thread_startup(&thread2);
 
     return 0;
