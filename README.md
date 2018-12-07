@@ -57,5 +57,5 @@ RT-Thread online packages
 
 ## 5、联系方式 & 感谢
 
-* 维护：name
+* 维护：yangjie11
 * 主页：https://github.com/RT-Thread-packages/kernel-sample.git
