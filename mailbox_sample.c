@@ -42,7 +42,7 @@ static void thread1_entry(void *parameter)
         rt_kprintf("thread1: try to recv a mail\n");
 
         /* 从邮箱中收取邮件 */
-        if (rt_mb_recv(&mb, (rt_uint32_t *)&str, RT_WAITING_FOREVER) == RT_EOK)
+        if (rt_mb_recv(&mb, (rt_ubase_t *)&str, RT_WAITING_FOREVER) == RT_EOK)
         {
             rt_kprintf("thread1: get a mail from mailbox, the content:%s\n", str);
             if (str == mb_str3)
@@ -96,7 +96,7 @@ int mailbox_sample(void)
     result = rt_mb_init(&mb,
                         "mbt",                      /* 名称是mbt */
                         &mb_pool[0],                /* 邮箱用到的内存池是mb_pool */
-                        sizeof(mb_pool) / 4,        /* 邮箱中的邮件数目，因为一封邮件占4字节 */
+                        sizeof(mb_pool) / sizeof(rt_ubase_t), /* 邮箱中的邮件数目,sizeof(rt_ubase_t)表示指针大小 */
                         RT_IPC_FLAG_FIFO);          /* 采用FIFO方式进行线程等待 */
     if (result != RT_EOK)
     {
