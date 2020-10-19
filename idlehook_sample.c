@@ -52,7 +52,7 @@ static void thread_entry(void *parameter)
         rt_exit_critical();
 
         /* 休眠500ms */
-        rt_kprintf("thread1 delay 50 OS Tick.\n", hook_times);
+        rt_kprintf("thread1 delay 500ms.\n");
         rt_thread_mdelay(500);
     }
     rt_kprintf("delete idle hook.\n");
