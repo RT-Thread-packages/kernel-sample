@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006-2018, RT-Thread Development Team
+ * Copyright (c) 2006-2021, RT-Thread Development Team
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -71,7 +71,7 @@ static void thread2_entry(void *parameter)
     while (count < 10)
     {
         count ++;
-        
+
         /* 分别发送正常邮件和紧急邮件到邮箱中 */
         /* 关调度器是为了同时给线程1两封邮件，观察线程1如何处理紧急邮件和正常邮件 */
         rt_enter_critical();

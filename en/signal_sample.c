@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006-2018, RT-Thread Development Team
+ * Copyright (c) 2006-2021, RT-Thread Development Team
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -12,16 +12,16 @@
 /*
  * Demo: signal
  *
- * This demo creates one thread. When the signal is installed, the signal 
- * processing mode is set to custom processing. The processing function of 
- * the signal is defined to be thread1_signal_handler(). After the thread is 
- * running and the signal is installed, a signal is sent to this thread. 
+ * This demo creates one thread. When the signal is installed, the signal
+ * processing mode is set to custom processing. The processing function of
+ * the signal is defined to be thread1_signal_handler(). After the thread is
+ * running and the signal is installed, a signal is sent to this thread.
  * This thread will receive the signal and print the message.
  *
  * read more:
  *    https://www.rt-thread.io/document/site/thread-comm/thread-comm/#signal
  */
- 
+
 #include <rtthread.h>
 
 #define THREAD_PRIORITY         25

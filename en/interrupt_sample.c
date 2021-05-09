@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006-2018, RT-Thread Development Team
+ * Copyright (c) 2006-2021, RT-Thread Development Team
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -36,14 +36,14 @@ static void thread_entry(void *parameter)
     rt_uint32_t level;
 
     no = (rt_uint32_t) parameter;
-    
+
     while (1)
     {
         /* disable interrupt */
         level = rt_hw_interrupt_disable();
-        
+
         cnt += no; /* critical sections (or critical region) */
-        
+
         /* enable interrupt */
         rt_hw_interrupt_enable(level);
 

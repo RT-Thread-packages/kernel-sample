@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006-2018, RT-Thread Development Team
+ * Copyright (c) 2006-2021, RT-Thread Development Team
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -11,7 +11,7 @@
 
 /*
  * Demo: Time-Slicing (or Round-Robin Scheduling)
- * 
+ *
  * This demo creates two threads to show how Time-Slicing works.
  *
  * read more:
@@ -48,7 +48,7 @@ static void thread_entry(void *parameter)
 int timeslice_sample(void)
 {
     rt_thread_t tid = RT_NULL; /* thread handle */
-    
+
     /* create thread #1 */
     tid = rt_thread_create("thread1",
                            thread_entry, (void *)1,

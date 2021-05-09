@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006-2018, RT-Thread Development Team
+ * Copyright (c) 2006-2021, RT-Thread Development Team
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -11,14 +11,14 @@
 
 /*
  * Demo: prevent priority inversions
- * 
+ *
  * This demo creates 3 threads and 1 mutex to
  * demonstrate how the mutex prevents priority inversions.
  *
  * read more:
  *    https://www.rt-thread.io/document/site/thread-sync/thread-sync/#mutex
  */
- 
+
 #include <rtthread.h>
 
 /* thread(s) handler */
@@ -38,7 +38,7 @@ static void thread1_entry(void *parameter)
     rt_thread_mdelay(100);
 
     /* at this point, thread #3 holds the mutex and thread #2 is pending on holding the mutex */
-    
+
     /* check the priority level of thread #2 and thread #3 */
     if (tid2->current_priority != tid3->current_priority)
     {
@@ -66,10 +66,10 @@ static void thread2_entry(void *parameter)
     /* let the lower priority thread run first */
     rt_thread_mdelay(50);
 
-    /* 
+    /*
      * pending the mutex
-     * At this time, kernel raises the priority of thread #3 to same priority 
-     * as thread #2 
+     * At this time, kernel raises the priority of thread #3 to same priority
+     * as thread #2
      */
     result = rt_mutex_take(mutex, RT_WAITING_FOREVER);
 

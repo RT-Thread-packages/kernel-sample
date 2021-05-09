@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006-2018, RT-Thread Development Team
+ * Copyright (c) 2006-2021, RT-Thread Development Team
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -11,7 +11,7 @@
 
 /*
  * Demo: dynamic memory management
- * 
+ *
  * This demo creates a dynamic thread to allocate and free memory.
  * Each time it allocates more memory, and it will end when it can't allocate any memory.
  *
@@ -35,8 +35,8 @@ void thread1_entry(void *parameter)
     {
         /* allocate memory of (1 << i) bytes  */
         ptr = rt_malloc(1 << i);
-        
-        if (ptr != RT_NULL) 
+
+        if (ptr != RT_NULL)
         {
             /* if memory allocated successfully */
             rt_kprintf("get memory :%d byte\n", (1 << i));
@@ -64,7 +64,7 @@ int dynmem_sample(void)
                            THREAD_TIMESLICE);
     /*start thread #1 */
     if (tid != RT_NULL)
-        rt_thread_startup(tid); 
+        rt_thread_startup(tid);
 
     return 0;
 }

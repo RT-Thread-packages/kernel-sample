@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006-2018, RT-Thread Development Team
+ * Copyright (c) 2006-2021, RT-Thread Development Team
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -8,7 +8,7 @@
  * 2018-08-24     yangjie      the first version
  * 2020-10-17     Meco Man     translate to English comment
  */
- 
+
 /*
  * Demo: memory pool
  *
@@ -19,7 +19,7 @@
  * read more:
  *    https://www.rt-thread.io/document/site/memory/memory/#memory-pool
  */
- 
+
 #include <rtthread.h>
 
 static rt_uint8_t *ptr[50];
