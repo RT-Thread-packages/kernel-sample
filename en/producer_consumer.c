@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006-2018, RT-Thread Development Team
+ * Copyright (c) 2006-2021, RT-Thread Development Team
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -19,7 +19,7 @@
  * read more:
  *    https://www.rt-thread.io/document/site/thread-sync/thread-sync/#semaphores
  */
- 
+
 #include <rtthread.h>
 
 #define THREAD_PRIORITY       6
@@ -113,7 +113,7 @@ int producer_consumer(void)
     if (producer_tid != RT_NULL)
         rt_thread_startup(producer_tid);
 
-    
+
     consumer_tid = rt_thread_create("consumer",
                                     consumer_thread_entry, RT_NULL,
                                     THREAD_STACK_SIZE,

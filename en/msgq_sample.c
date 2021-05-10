@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006-2018, RT-Thread Development Team
+ * Copyright (c) 2006-2021, RT-Thread Development Team
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -10,7 +10,7 @@
  */
 
 /*
- * Demo: message queue 
+ * Demo: message queue
  *
  * This demo creates two threads and one message queue:
  *    1) thread #1: receive message(s) from message queue
@@ -52,7 +52,7 @@ static void thread1_entry(void *parameter)
             }
         }
         cnt++;
-        
+
         /* delay for 50ms */
         rt_thread_mdelay(50);
     }
@@ -104,7 +104,7 @@ static void thread2_entry(void *parameter)
         }
         buf++;
         cnt++;
-        
+
         /* delay for 5ms */
         rt_thread_mdelay(5);
     }

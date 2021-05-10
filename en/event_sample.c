@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006-2018, RT-Thread Development Team
+ * Copyright (c) 2006-2021, RT-Thread Development Team
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -40,7 +40,7 @@ static void thread1_recv_event(void *param)
 {
     rt_uint32_t e;
 
-    /* 
+    /*
         first time to receive event(s):
         EITHER Event3 OR Event5 happened can resume thread1
         and then clear conrresponding event(s)' flag
@@ -58,7 +58,7 @@ static void thread1_recv_event(void *param)
     /*
         second time to receive event(s):
         BOTH Event3 AND Event5 happened can resume thread1
-        and then clear conrresponding event(s)' flag 
+        and then clear conrresponding event(s)' flag
     */
     if (rt_event_recv(&event, (EVENT_FLAG3 | EVENT_FLAG5),
                       RT_EVENT_FLAG_AND | RT_EVENT_FLAG_CLEAR,

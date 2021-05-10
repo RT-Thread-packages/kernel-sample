@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006-2018, RT-Thread Development Team
+ * Copyright (c) 2006-2021, RT-Thread Development Team
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -17,7 +17,7 @@
  * read more:
  *    https://www.rt-thread.io/document/site/thread-sync/thread-sync/#mutex
  */
- 
+
 #include <rtthread.h>
 
 #define THREAD_PRIORITY         8
@@ -36,12 +36,12 @@ static void rt_thread_entry1(void *parameter)
     {
         /* pending the mutex */
         rt_mutex_take(dynamic_mutex, RT_WAITING_FOREVER);
-        
+
         /* protect and deal with public variables */
         number1++;
         rt_thread_mdelay(10);
         number2++;
-        
+
         /* release the mutex */
         rt_mutex_release(dynamic_mutex);
     }

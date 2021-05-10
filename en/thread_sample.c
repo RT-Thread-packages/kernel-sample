@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006-2018, RT-Thread Development Team
+ * Copyright (c) 2006-2021, RT-Thread Development Team
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -9,17 +9,17 @@
  * 2020-10-17     Meco Man     translate to English comment
  */
 
-/* 
+/*
  * Demo: thread(s)
  *
- * This demo creates two threads: 
+ * This demo creates two threads:
  *    1) create thread #1 dynamically, and delete automatically when the thread #1 finished;
  *    2) create thread #2 statically, and print counting numbers continuously.
  *
  * read more:
  *    https://www.rt-thread.io/document/site/thread/thread/
  */
- 
+
 #include <rtthread.h>
 
 #define THREAD_PRIORITY         25
