@@ -105,7 +105,7 @@ static void thread3_entry(void *parameter)
 int pri_inversion(void)
 {
     /* create mutex */
-    mutex = rt_mutex_create("mutex", RT_IPC_FLAG_FIFO);
+    mutex = rt_mutex_create("mutex", RT_IPC_FLAG_PRIO);
     if (mutex == RT_NULL)
     {
         rt_kprintf("create dynamic mutex failed.\n");

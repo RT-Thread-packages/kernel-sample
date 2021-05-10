@@ -71,7 +71,7 @@ static void rt_thread_entry2(void *parameter)
 int mutex_sample(void)
 {
     /* 创建一个动态互斥量 */
-    dynamic_mutex = rt_mutex_create("dmutex", RT_IPC_FLAG_FIFO);
+    dynamic_mutex = rt_mutex_create("dmutex", RT_IPC_FLAG_PRIO);
     if (dynamic_mutex == RT_NULL)
     {
         rt_kprintf("create dynamic mutex failed.\n");
