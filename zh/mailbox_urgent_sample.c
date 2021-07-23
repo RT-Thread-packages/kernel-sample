@@ -97,7 +97,7 @@ int mailbox_urgent_sample(void)
                         "mbt",                      /* 名称是mbt */
                         &mb_pool[0],                /* 邮箱用到的内存池是mb_pool */
                         sizeof(mb_pool) / sizeof(rt_ubase_t), /* 邮箱中的邮件数目,sizeof(rt_ubase_t)表示指针大小 */
-                        RT_IPC_FLAG_FIFO);          /* 采用FIFO方式进行线程等待 */
+                        RT_IPC_FLAG_PRIO);          /* 采用PRIO方式进行线程等待 */
     if (result != RT_EOK)
     {
         rt_kprintf("init mailbox failed.\n");

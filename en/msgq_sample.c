@@ -120,7 +120,7 @@ int msgq_sample(void)
                         &msg_pool[0],               /* msg_pool's address */
                         1,                          /* the size of each message is 1 byte */
                         sizeof(msg_pool),           /* The size of the memory pool is the size of msg_pool */
-                        RT_IPC_FLAG_FIFO);
+                        RT_IPC_FLAG_PRIO);
 
     if (result != RT_EOK)
     {

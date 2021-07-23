@@ -76,7 +76,7 @@ static void rt_thread2_entry(void *parameter)
 int semaphore_sample()
 {
     /* 创建一个动态信号量，初始值是0 */
-    dynamic_sem = rt_sem_create("dsem", 0, RT_IPC_FLAG_FIFO);
+    dynamic_sem = rt_sem_create("dsem", 0, RT_IPC_FLAG_PRIO);
     if (dynamic_sem == RT_NULL)
     {
         rt_kprintf("create dynamic semaphore failed.\n");

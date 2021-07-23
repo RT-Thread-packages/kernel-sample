@@ -102,9 +102,9 @@ int producer_consumer(void)
     set = 0;
     get = 0;
 
-    rt_sem_init(&sem_lock, "lock",     1,      RT_IPC_FLAG_FIFO);
-    rt_sem_init(&sem_empty, "empty",   MAXSEM, RT_IPC_FLAG_FIFO);
-    rt_sem_init(&sem_full, "full",     0,      RT_IPC_FLAG_FIFO);
+    rt_sem_init(&sem_lock, "lock",     1,      RT_IPC_FLAG_PRIO);
+    rt_sem_init(&sem_empty, "empty",   MAXSEM, RT_IPC_FLAG_PRIO);
+    rt_sem_init(&sem_full, "full",     0,      RT_IPC_FLAG_PRIO);
 
     producer_tid = rt_thread_create("producer",
                                     producer_thread_entry, RT_NULL,

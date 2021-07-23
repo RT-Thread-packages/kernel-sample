@@ -81,7 +81,7 @@ int event_sample(void)
     rt_err_t result;
 
     /* 初始化事件对象 */
-    result = rt_event_init(&event, "event", RT_IPC_FLAG_FIFO);
+    result = rt_event_init(&event, "event", RT_IPC_FLAG_PRIO);
     if (result != RT_EOK)
     {
         rt_kprintf("init event failed.\n");
