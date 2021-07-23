@@ -103,9 +103,9 @@ int producer_consumer(void)
     get = 0;
 
     /* 初始化3个信号量 */
-    rt_sem_init(&sem_lock, "lock",     1,      RT_IPC_FLAG_FIFO);
-    rt_sem_init(&sem_empty, "empty",   MAXSEM, RT_IPC_FLAG_FIFO);
-    rt_sem_init(&sem_full, "full",     0,      RT_IPC_FLAG_FIFO);
+    rt_sem_init(&sem_lock, "lock",     1,      RT_IPC_FLAG_PRIO);
+    rt_sem_init(&sem_empty, "empty",   MAXSEM, RT_IPC_FLAG_PRIO);
+    rt_sem_init(&sem_full, "full",     0,      RT_IPC_FLAG_PRIO);
 
     /* 创建生产者线程 */
     producer_tid = rt_thread_create("producer",

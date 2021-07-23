@@ -106,7 +106,7 @@ int mailbox_sample(void)
                         "mbt",
                         &mb_pool[0],
                         sizeof(mb_pool) / sizeof(rt_ubase_t), /* size of mails */
-                        RT_IPC_FLAG_FIFO);
+                        RT_IPC_FLAG_PRIO);
     if (result != RT_EOK)
     {
         rt_kprintf("init mailbox failed.\n");
