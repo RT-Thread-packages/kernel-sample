@@ -81,7 +81,7 @@ int mempool_sample(void)
                             THREAD_STACK_SIZE,
                             THREAD_PRIORITY, THREAD_TIMESLICE);
 #ifdef RT_USING_SMP
-    /* Bind threads to the same core to avoid messy log outputwhen multiple cores are enabled */
+    /* Bind threads to the same core to avoid messy log output when multiple cores are enabled */
     rt_thread_control(tid1, RT_THREAD_CTRL_BIND_CPU, (void*)0);
 #endif
     if (tid1 != RT_NULL)
@@ -92,7 +92,7 @@ int mempool_sample(void)
                             THREAD_STACK_SIZE,
                             THREAD_PRIORITY + 1, THREAD_TIMESLICE);
 #ifdef RT_USING_SMP
-    /* Bind threads to the same core to avoid messy log outputwhen multiple cores are enabled */
+    /* Bind threads to the same core to avoid messy log output when multiple cores are enabled */
     rt_thread_control(tid2, RT_THREAD_CTRL_BIND_CPU, (void*)0);
 #endif
     if (tid2 != RT_NULL)
