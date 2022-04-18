@@ -110,6 +110,7 @@ int event_sample(void)
                    sizeof(thread1_stack),
                    THREAD_PRIORITY - 1, THREAD_TIMESLICE);
 #ifdef RT_USING_SMP
+    /* Bind threads to the same core to avoid messy log outputwhen multiple cores are enabled */
     rt_thread_control(&thread1, RT_THREAD_CTRL_BIND_CPU, (void*)0);
 #endif
     rt_thread_startup(&thread1); /* start thread #1 */
@@ -123,6 +124,7 @@ int event_sample(void)
                    sizeof(thread2_stack),
                    THREAD_PRIORITY, THREAD_TIMESLICE);
 #ifdef RT_USING_SMP
+    /* Bind threads to the same core to avoid messy log outputwhen multiple cores are enabled */
     rt_thread_control(&thread2, RT_THREAD_CTRL_BIND_CPU, (void*)0);
 #endif
     rt_thread_startup(&thread2); /* start thread #2 */

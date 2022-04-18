@@ -55,6 +55,7 @@ int timeslice_sample(void)
                            THREAD_STACK_SIZE,
                            THREAD_PRIORITY, THREAD_TIMESLICE);
 #ifdef RT_USING_SMP
+    /* Bind threads to the same core to avoid messy log outputwhen multiple cores are enabled */
     rt_thread_control(tid, RT_THREAD_CTRL_BIND_CPU, (void*)0);
 #endif
     if (tid != RT_NULL)
@@ -66,6 +67,7 @@ int timeslice_sample(void)
                            THREAD_STACK_SIZE,
                            THREAD_PRIORITY, THREAD_TIMESLICE - 5);
 #ifdef RT_USING_SMP
+    /* Bind threads to the same core to avoid messy log outputwhen multiple cores are enabled */
     rt_thread_control(tid, RT_THREAD_CTRL_BIND_CPU, (void*)0);
 #endif
     if (tid != RT_NULL)

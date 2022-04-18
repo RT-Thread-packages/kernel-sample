@@ -64,6 +64,7 @@ int thread_sample(void)
                             THREAD_STACK_SIZE,
                             THREAD_PRIORITY, THREAD_TIMESLICE);
 #ifdef RT_USING_SMP
+    /* 绑定线程到同一个核上，避免启用多核时的输出混乱 */
     rt_thread_control(tid1, RT_THREAD_CTRL_BIND_CPU, (void*)0);
 #endif
     /* 如果获得线程控制块，启动这个线程 */
@@ -79,6 +80,7 @@ int thread_sample(void)
                    sizeof(thread2_stack),
                    THREAD_PRIORITY - 1, THREAD_TIMESLICE);
 #ifdef RT_USING_SMP
+    /* 绑定线程到同一个核上，避免启用多核时的输出混乱 */
     rt_thread_control(&thread2, RT_THREAD_CTRL_BIND_CPU, (void*)0);
 #endif
     rt_thread_startup(&thread2);

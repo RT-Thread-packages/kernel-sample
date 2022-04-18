@@ -113,6 +113,7 @@ int producer_consumer(void)
                                     THREAD_STACK_SIZE,
                                     THREAD_PRIORITY - 1, THREAD_TIMESLICE);
 #ifdef RT_USING_SMP
+    /* 绑定线程到同一个核上，避免启用多核时的输出混乱 */
     rt_thread_control(producer_tid, RT_THREAD_CTRL_BIND_CPU, (void*)0);
 #endif
     if (producer_tid != RT_NULL)
@@ -124,6 +125,7 @@ int producer_consumer(void)
                                     THREAD_STACK_SIZE,
                                     THREAD_PRIORITY + 1, THREAD_TIMESLICE);
 #ifdef RT_USING_SMP
+    /* 绑定线程到同一个核上，避免启用多核时的输出混乱 */
     rt_thread_control(consumer_tid, RT_THREAD_CTRL_BIND_CPU, (void*)0);
 #endif
     if (consumer_tid != RT_NULL)

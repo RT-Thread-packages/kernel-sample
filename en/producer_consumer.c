@@ -111,6 +111,7 @@ int producer_consumer(void)
                                     THREAD_STACK_SIZE,
                                     THREAD_PRIORITY - 1, THREAD_TIMESLICE);
 #ifdef RT_USING_SMP
+    /* Bind threads to the same core to avoid messy log outputwhen multiple cores are enabled */
     rt_thread_control(producer_tid, RT_THREAD_CTRL_BIND_CPU, (void*)0);
 #endif
     if (producer_tid != RT_NULL)
@@ -122,6 +123,7 @@ int producer_consumer(void)
                                     THREAD_STACK_SIZE,
                                     THREAD_PRIORITY + 1, THREAD_TIMESLICE);
 #ifdef RT_USING_SMP
+    /* Bind threads to the same core to avoid messy log outputwhen multiple cores are enabled */
     rt_thread_control(consumer_tid, RT_THREAD_CTRL_BIND_CPU, (void*)0);
 #endif
     if (consumer_tid != RT_NULL)
