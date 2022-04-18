@@ -70,7 +70,9 @@ int thread_sample(void)
                             thread1_entry, RT_NULL,
                             THREAD_STACK_SIZE,
                             THREAD_PRIORITY, THREAD_TIMESLICE);
-
+#ifdef RT_USING_SMP
+    rt_thread_control(tid1,RT_THREAD_CTRL_BIND_CPU,(void*)0);
+#endif
     /* start thread #1 */
     if (tid1 != RT_NULL)
         rt_thread_startup(tid1);
@@ -83,6 +85,9 @@ int thread_sample(void)
                    &thread2_stack[0],
                    sizeof(thread2_stack),
                    THREAD_PRIORITY - 1, THREAD_TIMESLICE);
+#ifdef RT_USING_SMP
+    rt_thread_control(&thread2,RT_THREAD_CTRL_BIND_CPU,(void*)0);
+#endif
     rt_thread_startup(&thread2); /* start thread #2 */
 
     return 0;

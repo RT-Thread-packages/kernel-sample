@@ -128,6 +128,9 @@ int msgq_sample(void)
                    &thread1_stack[0],
                    sizeof(thread1_stack),
                    THREAD_PRIORITY, THREAD_TIMESLICE);
+#ifdef RT_USING_SMP
+    rt_thread_control(&thread1,RT_THREAD_CTRL_BIND_CPU,(void*)0);
+#endif
     rt_thread_startup(&thread1);
 
     rt_thread_init(&thread2,
@@ -137,6 +140,9 @@ int msgq_sample(void)
                    &thread2_stack[0],
                    sizeof(thread2_stack),
                    THREAD_PRIORITY, THREAD_TIMESLICE);
+#ifdef RT_USING_SMP
+    rt_thread_control(&thread2,RT_THREAD_CTRL_BIND_CPU,(void*)0);
+#endif
     rt_thread_startup(&thread2);
 
     return 0;

@@ -49,6 +49,9 @@ int timeslice_sample(void)
                            thread_entry, (void *)1,
                            THREAD_STACK_SIZE,
                            THREAD_PRIORITY, THREAD_TIMESLICE);
+#ifdef RT_USING_SMP
+    rt_thread_control(tid,RT_THREAD_CTRL_BIND_CPU,(void*)0);
+#endif
     if (tid != RT_NULL)
         rt_thread_startup(tid);
 
@@ -57,6 +60,9 @@ int timeslice_sample(void)
                            thread_entry, (void *)2,
                            THREAD_STACK_SIZE,
                            THREAD_PRIORITY, THREAD_TIMESLICE - 5);
+#ifdef RT_USING_SMP
+    rt_thread_control(tid,RT_THREAD_CTRL_BIND_CPU,(void*)0);
+#endif
     if (tid != RT_NULL)
         rt_thread_startup(tid);
 

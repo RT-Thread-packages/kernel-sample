@@ -112,6 +112,9 @@ int producer_consumer(void)
                                     producer_thread_entry, RT_NULL,
                                     THREAD_STACK_SIZE,
                                     THREAD_PRIORITY - 1, THREAD_TIMESLICE);
+#ifdef RT_USING_SMP
+    rt_thread_control(producer_tid,RT_THREAD_CTRL_BIND_CPU,(void*)0);
+#endif
     if (producer_tid != RT_NULL)
         rt_thread_startup(producer_tid);
 
@@ -120,6 +123,9 @@ int producer_consumer(void)
                                     consumer_thread_entry, RT_NULL,
                                     THREAD_STACK_SIZE,
                                     THREAD_PRIORITY + 1, THREAD_TIMESLICE);
+#ifdef RT_USING_SMP
+    rt_thread_control(consumer_tid,RT_THREAD_CTRL_BIND_CPU,(void*)0);
+#endif
     if (consumer_tid != RT_NULL)
         rt_thread_startup(consumer_tid);
 
