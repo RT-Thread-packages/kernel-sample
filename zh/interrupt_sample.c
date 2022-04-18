@@ -46,7 +46,7 @@ int interrupt_sample(void)
                               THREAD_STACK_SIZE,
                               THREAD_PRIORITY, THREAD_TIMESLICE);
 #ifdef RT_USING_SMP
-    rt_thread_control(thread,RT_THREAD_CTRL_BIND_CPU,(void*)0);
+    rt_thread_control(thread, RT_THREAD_CTRL_BIND_CPU, (void*)0);
 #endif
     if (thread != RT_NULL)
         rt_thread_startup(thread);
@@ -56,7 +56,7 @@ int interrupt_sample(void)
                               THREAD_STACK_SIZE,
                               THREAD_PRIORITY, THREAD_TIMESLICE);
 #ifdef RT_USING_SMP
-    rt_thread_control(thread,RT_THREAD_CTRL_BIND_CPU,(void*)0);
+    rt_thread_control(thread, RT_THREAD_CTRL_BIND_CPU, (void*)0);
 #endif
     if (thread != RT_NULL)
         rt_thread_startup(thread);

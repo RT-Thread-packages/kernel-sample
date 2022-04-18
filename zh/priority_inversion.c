@@ -117,7 +117,7 @@ int pri_inversion(void)
                             THREAD_STACK_SIZE,
                             THREAD_PRIORITY - 1, THREAD_TIMESLICE);
 #ifdef RT_USING_SMP
-    rt_thread_control(tid1,RT_THREAD_CTRL_BIND_CPU,(void*)0);
+    rt_thread_control(tid1, RT_THREAD_CTRL_BIND_CPU, (void*)0);
 #endif
     if (tid1 != RT_NULL)
         rt_thread_startup(tid1);
@@ -129,7 +129,7 @@ int pri_inversion(void)
                             THREAD_STACK_SIZE,
                             THREAD_PRIORITY, THREAD_TIMESLICE);
 #ifdef RT_USING_SMP
-    rt_thread_control(tid2,RT_THREAD_CTRL_BIND_CPU,(void*)0);
+    rt_thread_control(tid2, RT_THREAD_CTRL_BIND_CPU, (void*)0);
 #endif
     if (tid2 != RT_NULL)
         rt_thread_startup(tid2);
@@ -141,7 +141,7 @@ int pri_inversion(void)
                             THREAD_STACK_SIZE,
                             THREAD_PRIORITY + 1, THREAD_TIMESLICE);
 #ifdef RT_USING_SMP
-    rt_thread_control(tid3,RT_THREAD_CTRL_BIND_CPU,(void*)0);
+    rt_thread_control(tid3, RT_THREAD_CTRL_BIND_CPU, (void*)0);
 #endif
     if (tid3 != RT_NULL)
         rt_thread_startup(tid3);

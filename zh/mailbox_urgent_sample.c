@@ -112,7 +112,7 @@ int mailbox_urgent_sample(void)
                    sizeof(thread1_stack),
                    THREAD_PRIORITY, THREAD_TIMESLICE);
 #ifdef RT_USING_SMP
-    rt_thread_control(&thread1,RT_THREAD_CTRL_BIND_CPU,(void*)0);
+    rt_thread_control(&thread1, RT_THREAD_CTRL_BIND_CPU, (void*)0);
 #endif
     rt_thread_startup(&thread1);
 
@@ -124,7 +124,7 @@ int mailbox_urgent_sample(void)
                    sizeof(thread2_stack),
                    THREAD_PRIORITY, THREAD_TIMESLICE);
 #ifdef RT_USING_SMP
-    rt_thread_control(&thread2,RT_THREAD_CTRL_BIND_CPU,(void*)0);
+    rt_thread_control(&thread2, RT_THREAD_CTRL_BIND_CPU, (void*)0);
 #endif
     rt_thread_startup(&thread2);
     return 0;
