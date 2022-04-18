@@ -59,6 +59,10 @@ int scheduler_hook(void)
                             thread_entry, (void *)1,
                             THREAD_STACK_SIZE,
                             THREAD_PRIORITY, THREAD_TIMESLICE);
+#ifdef RT_USING_SMP
+    /* Bind threads to the same core to avoid messy log output when multiple cores are enabled */
+    rt_thread_control(tid1, RT_THREAD_CTRL_BIND_CPU, (void*)0);
+#endif
     if (tid1 != RT_NULL)
         rt_thread_startup(tid1);
 
@@ -66,6 +70,10 @@ int scheduler_hook(void)
                             thread_entry, (void *)2,
                             THREAD_STACK_SIZE,
                             THREAD_PRIORITY, THREAD_TIMESLICE - 5);
+#ifdef RT_USING_SMP
+    /* Bind threads to the same core to avoid messy log output when multiple cores are enabled */
+    rt_thread_control(tid2, RT_THREAD_CTRL_BIND_CPU, (void*)0);
+#endif
     if (tid2 != RT_NULL)
         rt_thread_startup(tid2);
     return 0;

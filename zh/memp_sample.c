@@ -76,6 +76,10 @@ int mempool_sample(void)
     tid1 = rt_thread_create("thread1", thread1_mp_alloc, RT_NULL,
                             THREAD_STACK_SIZE,
                             THREAD_PRIORITY, THREAD_TIMESLICE);
+#ifdef RT_USING_SMP
+    /* 绑定线程到同一个核上，避免启用多核时的输出混乱 */
+    rt_thread_control(tid1, RT_THREAD_CTRL_BIND_CPU, (void*)0);
+#endif
     if (tid1 != RT_NULL)
         rt_thread_startup(tid1);
 
@@ -83,6 +87,10 @@ int mempool_sample(void)
     tid2 = rt_thread_create("thread2", thread2_mp_release, RT_NULL,
                             THREAD_STACK_SIZE,
                             THREAD_PRIORITY + 1, THREAD_TIMESLICE);
+#ifdef RT_USING_SMP
+    /* 绑定线程到同一个核上，避免启用多核时的输出混乱 */
+    rt_thread_control(tid2, RT_THREAD_CTRL_BIND_CPU, (void*)0);
+#endif
     if (tid2 != RT_NULL)
         rt_thread_startup(tid2);
 

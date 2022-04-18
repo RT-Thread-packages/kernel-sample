@@ -45,6 +45,10 @@ int interrupt_sample(void)
     thread = rt_thread_create("thread1", thread_entry, (void *)10,
                               THREAD_STACK_SIZE,
                               THREAD_PRIORITY, THREAD_TIMESLICE);
+#ifdef RT_USING_SMP
+    /* 绑定线程到同一个核上，避免启用多核时的输出混乱 */
+    rt_thread_control(thread, RT_THREAD_CTRL_BIND_CPU, (void*)0);
+#endif
     if (thread != RT_NULL)
         rt_thread_startup(thread);
 
@@ -52,6 +56,10 @@ int interrupt_sample(void)
     thread = rt_thread_create("thread2", thread_entry, (void *)20,
                               THREAD_STACK_SIZE,
                               THREAD_PRIORITY, THREAD_TIMESLICE);
+#ifdef RT_USING_SMP
+    /* 绑定线程到同一个核上，避免启用多核时的输出混乱 */
+    rt_thread_control(thread, RT_THREAD_CTRL_BIND_CPU, (void*)0);
+#endif
     if (thread != RT_NULL)
         rt_thread_startup(thread);
 

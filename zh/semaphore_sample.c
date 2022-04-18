@@ -94,6 +94,10 @@ int semaphore_sample()
                    &thread1_stack[0],
                    sizeof(thread1_stack),
                    THREAD_PRIORITY, THREAD_TIMESLICE);
+#ifdef RT_USING_SMP
+    /* 绑定线程到同一个核上，避免启用多核时的输出混乱 */
+    rt_thread_control(&thread1, RT_THREAD_CTRL_BIND_CPU, (void*)0);
+#endif
     rt_thread_startup(&thread1);
 
     rt_thread_init(&thread2,
@@ -103,6 +107,10 @@ int semaphore_sample()
                    &thread2_stack[0],
                    sizeof(thread2_stack),
                    THREAD_PRIORITY - 1, THREAD_TIMESLICE);
+#ifdef RT_USING_SMP
+    /* 绑定线程到同一个核上，避免启用多核时的输出混乱 */
+    rt_thread_control(&thread2, RT_THREAD_CTRL_BIND_CPU, (void*)0);
+#endif
     rt_thread_startup(&thread2);
 
     return 0;
