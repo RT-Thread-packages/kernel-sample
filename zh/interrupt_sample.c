@@ -18,7 +18,7 @@
 
 /* 同时访问的全局变量 */
 static rt_uint32_t cnt;
-void thread_entry(void *parameter)
+static void thread_entry(void *parameter)
 {
     rt_uint32_t no;
     rt_uint32_t level;
