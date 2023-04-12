@@ -27,7 +27,11 @@
 /* semaphore handler */
 static rt_sem_t dynamic_sem = RT_NULL;
 
+#ifdef rt_align
+rt_align(RT_ALIGN_SIZE)
+#else
 ALIGN(RT_ALIGN_SIZE)
+#endif
 static char thread1_stack[1024];
 static struct rt_thread thread1;
 static void rt_thread1_entry(void *parameter)
@@ -52,7 +56,11 @@ static void rt_thread1_entry(void *parameter)
     }
 }
 
+#ifdef rt_align
+rt_align(RT_ALIGN_SIZE)
+#else
 ALIGN(RT_ALIGN_SIZE)
+#endif
 static char thread2_stack[1024];
 static struct rt_thread thread2;
 static void rt_thread2_entry(void *parameter)

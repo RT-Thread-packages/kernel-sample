@@ -31,7 +31,11 @@
 /* ECB (Event Control Block) */
 static struct rt_event event;
 
+#ifdef rt_align
+rt_align(RT_ALIGN_SIZE)
+#else
 ALIGN(RT_ALIGN_SIZE)
+#endif
 static char thread1_stack[1024]; /* thread stack 1024 Byte*/
 static struct rt_thread thread1; /* TCB (Thread Control Block) */
 
@@ -69,7 +73,11 @@ static void thread1_recv_event(void *param)
     rt_kprintf("thread1 leave.\n");
 }
 
+#ifdef rt_align
+rt_align(RT_ALIGN_SIZE)
+#else
 ALIGN(RT_ALIGN_SIZE)
+#endif
 static char thread2_stack[1024]; /* thread stack 1024 Byte*/
 static struct rt_thread thread2; /* TCB (Thread Control Block) */
 

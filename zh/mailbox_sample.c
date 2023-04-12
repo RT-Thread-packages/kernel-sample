@@ -28,7 +28,11 @@ static char mb_str1[] = "I'm a mail!";
 static char mb_str2[] = "this is another mail!";
 static char mb_str3[] = "over";
 
+#ifdef rt_align
+rt_align(RT_ALIGN_SIZE)
+#else
 ALIGN(RT_ALIGN_SIZE)
+#endif
 static char thread1_stack[1024];
 static struct rt_thread thread1;
 
@@ -56,7 +60,11 @@ static void thread1_entry(void *parameter)
     rt_mb_detach(&mb);
 }
 
+#ifdef rt_align
+rt_align(RT_ALIGN_SIZE)
+#else
 ALIGN(RT_ALIGN_SIZE)
+#endif
 static char thread2_stack[1024];
 static struct rt_thread thread2;
 

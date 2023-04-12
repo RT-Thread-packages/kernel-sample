@@ -35,7 +35,11 @@ static void thread1_entry(void *parameter)
     }
 }
 
+#ifdef rt_align
+rt_align(RT_ALIGN_SIZE)
+#else
 ALIGN(RT_ALIGN_SIZE)
+#endif
 static char thread2_stack[1024];
 static struct rt_thread thread2;
 

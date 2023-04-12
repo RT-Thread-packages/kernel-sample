@@ -24,7 +24,11 @@
 static rt_mutex_t dynamic_mutex = RT_NULL;
 static rt_uint8_t number1, number2 = 0;
 
+#ifdef rt_align
+rt_align(RT_ALIGN_SIZE)
+#else
 ALIGN(RT_ALIGN_SIZE)
+#endif
 static char thread1_stack[1024];
 static struct rt_thread thread1;
 static void rt_thread_entry1(void *parameter)
@@ -40,7 +44,11 @@ static void rt_thread_entry1(void *parameter)
     }
 }
 
+#ifdef rt_align
+rt_align(RT_ALIGN_SIZE)
+#else
 ALIGN(RT_ALIGN_SIZE)
+#endif
 static char thread2_stack[1024];
 static struct rt_thread thread2;
 static void rt_thread_entry2(void *parameter)
