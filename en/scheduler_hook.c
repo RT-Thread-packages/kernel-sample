@@ -47,7 +47,7 @@ static rt_thread_t tid2 = RT_NULL;
 
 static void hook_of_scheduler(struct rt_thread *from, struct rt_thread *to)
 {
-    rt_kprintf("from: %s -->  to: %s \n", from->name, to->name);
+    rt_kprintf("from: %s -->  to: %s \n", from->parent.name, to->parent.name);
 }
 
 int scheduler_hook(void)
