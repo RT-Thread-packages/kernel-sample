@@ -40,7 +40,11 @@ static rt_thread_t tid2 = RT_NULL;
 
 static void hook_of_scheduler(struct rt_thread *from, struct rt_thread *to)
 {
+#if RT_VER_NUM >= 0x50001
     rt_kprintf("from: %s -->  to: %s \n", from->parent.name, to->parent.name);
+#else
+    rt_kprintf("from: %s -->  to: %s \n", from->name, to->name);
+#endif
 }
 
 int scheduler_hook(void)
