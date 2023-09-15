@@ -15,7 +15,7 @@
  * This demo demonstrates how the mutex manage the shared resource.
  *
  * read more:
- *    https://www.rt-thread.io/document/site/thread-sync/thread-sync/#mutex
+ *    https://www.rt-thread.io/document/site/programming-manual/ipc1/ipc1/#mutex
  */
 
 #include <rtthread.h>

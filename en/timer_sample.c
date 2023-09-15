@@ -17,7 +17,7 @@
  *    2) timer #2: periodic mode timer
  *
  * read more:
- *    https://www.rt-thread.io/document/site/timer/timer/#timer-management
+ *    https://www.rt-thread.io/document/site/programming-manual/timer/timer/#timer-management
  */
 
 #include <rtthread.h>

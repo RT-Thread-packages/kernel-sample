@@ -17,7 +17,7 @@
  *    2) thread #2: send normal and urgent messages to message queue
  *
  * read more:
- *    https://www.rt-thread.io/document/site/thread-comm/thread-comm/#message-queue
+ *    https://www.rt-thread.io/document/site/programming-manual/ipc2/ipc2/#message-queue
  */
 
 #include <rtthread.h>
@@ -47,7 +47,11 @@ static void thread1_entry(void *parameter)
     while (1)
     {
         /* pend and receive message(s) from message queue */
+#if (RTTHREAD_VERSION >= RT_VERSION_CHECK(5, 0, 1))
+        if (rt_mq_recv(&mq, &buf, sizeof(buf), RT_WAITING_FOREVER) > 0)
+#else
         if (rt_mq_recv(&mq, &buf, sizeof(buf), RT_WAITING_FOREVER) == RT_EOK)
+#endif
         {
             rt_kprintf("thread1: recv msg from msg queue, the content:%c\n", buf);
             if (cnt == 19)

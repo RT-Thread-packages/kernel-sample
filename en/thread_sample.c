@@ -17,7 +17,7 @@
  *    2) create thread #2 statically, and print counting numbers continuously.
  *
  * read more:
- *    https://www.rt-thread.io/document/site/thread/thread/
+ *    https://www.rt-thread.io/document/site/programming-manual/thread/thread/
  */
 
 #include <rtthread.h>

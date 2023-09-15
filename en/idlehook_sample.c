@@ -16,8 +16,8 @@
  * thread hook function will be invoked when thread #1 is delaying.
  *
  * read more:
- *    https://www.rt-thread.io/document/site/thread/thread/#set-and-delete-idle-hooks
- *    https://www.rt-thread.io/document/site/thread/thread/#idle-thread
+ *    https://www.rt-thread.io/document/site/programming-manual/thread/thread/#set-and-delete-idle-hooks
+ *    https://www.rt-thread.io/document/site/programming-manual/thread/thread/#idle-thread
  */
 
 #include <rtthread.h>

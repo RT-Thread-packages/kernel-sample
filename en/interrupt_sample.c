@@ -15,7 +15,7 @@
  * This demo demonstrates how to disable and enable interrupt to access global variable.
  *
  * read more:
- *    https://www.rt-thread.io/document/site/interrupt/interrupt/
+ *    https://www.rt-thread.io/document/site/programming-manual/interrupt/interrupt/
  */
 
 #include <rthw.h>

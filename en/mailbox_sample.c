@@ -17,7 +17,7 @@
  *    2) thread #2: send mails
  *
  * read more:
- *    https://www.rt-thread.io/document/site/thread-comm/thread-comm/#mailbox
+ *    https://www.rt-thread.io/document/site/programming-manual/ipc2/ipc2/#mailbox
  */
 
 #include <rtthread.h>
