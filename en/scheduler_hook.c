@@ -15,7 +15,7 @@
  * This demo sets a scheduler hook function and prints context-switching information.
  *
  * read more:
- *    https://www.rt-thread.io/document/site/thread/thread/#set-the-scheduler-hook
+ *    https://www.rt-thread.io/document/site/programming-manual/thread/thread/#set-the-scheduler-hook
  */
 
 #include <rtthread.h>

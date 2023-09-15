@@ -17,7 +17,7 @@
  *    2) thread #2: sent events (Event3 and Event5)
  *
  * read more:
- *    https://www.rt-thread.io/document/site/thread-sync/thread-sync/#event
+ *    https://www.rt-thread.io/document/site/programming-manual/ipc1/ipc1/#event
  */
 
 #include <rtthread.h>

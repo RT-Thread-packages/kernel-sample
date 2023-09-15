@@ -17,7 +17,7 @@
  *   2) thread #2: free memory pool
  *
  * read more:
- *    https://www.rt-thread.io/document/site/memory/memory/#memory-pool
+ *    https://www.rt-thread.io/document/site/programming-manual/memory/memory/#memory-pool
  */
 
 #include <rtthread.h>

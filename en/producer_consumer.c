@@ -17,7 +17,7 @@
  *     2) consumer thread: prints out the value and adds it up
  *
  * read more:
- *    https://www.rt-thread.io/document/site/thread-sync/thread-sync/#semaphores
+ *    https://www.rt-thread.io/document/site/programming-manual/ipc1/ipc1/#semaphores
  */
 
 #include <rtthread.h>

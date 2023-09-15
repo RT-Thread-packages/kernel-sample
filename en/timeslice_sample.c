@@ -15,7 +15,7 @@
  * This demo creates two threads to show how Time-Slicing works.
  *
  * read more:
- *    https://www.rt-thread.io/document/site/thread/thread/#time-slice
+ *    https://www.rt-thread.io/document/site/programming-manual/thread/thread/#time-slice
  */
 
 #include <rtthread.h>

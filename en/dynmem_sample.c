@@ -16,7 +16,7 @@
  * Each time it allocates more memory, and it will end when it can't allocate any memory.
  *
  * read more:
- *    https://www.rt-thread.io/document/site/memory/memory/#memory-management
+ *    https://www.rt-thread.io/document/site/programming-manual/memory/memory/
  */
 
 #include <rtthread.h>

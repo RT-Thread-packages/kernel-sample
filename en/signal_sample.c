@@ -19,7 +19,7 @@
  * This thread will receive the signal and print the message.
  *
  * read more:
- *    https://www.rt-thread.io/document/site/thread-comm/thread-comm/#signal
+ *    https://www.rt-thread.io/document/site/programming-manual/ipc2/ipc2/#signal
  */
 
 #include <rtthread.h>
