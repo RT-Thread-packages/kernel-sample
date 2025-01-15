@@ -38,8 +38,23 @@ static void thread1_entry(void *parameter)
     rt_thread_mdelay(100);
 
     /* 此时 thread3 持有 mutex，并且 thread2 等待持有 mutex */
-
+#if (RTTHREAD_VERSION >= RT_VERSION_CHECK(5, 1, 0))
     /* 检查 thread2 与 thread3 的优先级情况 */
+    if (RT_SCHED_PRIV(tid2).current_priority != RT_SCHED_PRIV(tid3).current_priority)
+    {
+        /* 优先级不相同，测试失败 */
+        rt_kprintf("the priority of thread2 is: %d\n", RT_SCHED_PRIV(tid2).current_priority);
+        rt_kprintf("the priority of thread3 is: %d\n", RT_SCHED_PRIV(tid3).current_priority);
+        rt_kprintf("test failed.\n");
+        return;
+    }
+    else
+    {
+        rt_kprintf("the priority of thread2 is: %d\n", RT_SCHED_PRIV(tid2).current_priority);
+        rt_kprintf("the priority of thread3 is: %d\n", RT_SCHED_PRIV(tid3).current_priority);
+        rt_kprintf("test OK.\n");
+    }
+#else
     if (tid2->current_priority != tid3->current_priority)
     {
         /* 优先级不相同，测试失败 */
@@ -54,15 +69,20 @@ static void thread1_entry(void *parameter)
         rt_kprintf("the priority of thread3 is: %d\n", tid3->current_priority);
         rt_kprintf("test OK.\n");
     }
+#endif
+
 }
 
 /* 线程 2 入口 */
 static void thread2_entry(void *parameter)
 {
     rt_err_t result;
-
+#if (RTTHREAD_VERSION >= RT_VERSION_CHECK(5, 1, 0))
+    rt_kprintf("the priority of thread2 is: %d\n", RT_SCHED_PRIV(tid2).current_priority);
+#else
     rt_kprintf("the priority of thread2 is: %d\n", tid2->current_priority);
-
+#endif
+	
     /* 先让低优先级线程运行 */
     rt_thread_mdelay(50);
 
@@ -84,8 +104,12 @@ static void thread3_entry(void *parameter)
 {
     rt_tick_t tick;
     rt_err_t result;
-
+#if (RTTHREAD_VERSION >= RT_VERSION_CHECK(5, 1, 0))
+    rt_kprintf("the priority of thread3 is: %d\n", RT_SCHED_PRIV(tid3).current_priority);
+#else
     rt_kprintf("the priority of thread3 is: %d\n", tid3->current_priority);
+#endif
+	
 
     result = rt_mutex_take(mutex, RT_WAITING_FOREVER);
     if (result != RT_EOK)
