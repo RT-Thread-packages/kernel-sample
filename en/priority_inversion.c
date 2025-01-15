@@ -40,6 +40,22 @@ static void thread1_entry(void *parameter)
     /* at this point, thread #3 holds the mutex and thread #2 is pending on holding the mutex */
 
     /* check the priority level of thread #2 and thread #3 */
+#if (RTTHREAD_VERSION >= RT_VERSION_CHECK(5, 1, 0))
+    if (RT_SCHED_PRIV(tid2).current_priority != RT_SCHED_PRIV(tid3).current_priority)
+    {
+        /* failure */
+        rt_kprintf("the priority of thread2 is: %d\n", RT_SCHED_PRIV(tid2).current_priority);
+        rt_kprintf("the priority of thread3 is: %d\n", RT_SCHED_PRIV(tid3).current_priority);
+        rt_kprintf("test failed.\n");
+        return;
+    }
+    else
+    {
+        rt_kprintf("the priority of thread2 is: %d\n", RT_SCHED_PRIV(tid2).current_priority);
+        rt_kprintf("the priority of thread3 is: %d\n", RT_SCHED_PRIV(tid3).current_priority);
+        rt_kprintf("test OK.\n");
+    }
+#else
     if (tid2->current_priority != tid3->current_priority)
     {
         /* failure */
@@ -54,6 +70,7 @@ static void thread1_entry(void *parameter)
         rt_kprintf("the priority of thread3 is: %d\n", tid3->current_priority);
         rt_kprintf("test OK.\n");
     }
+#endif
 }
 
 /* thread #2 entry function */
@@ -61,8 +78,11 @@ static void thread2_entry(void *parameter)
 {
     rt_err_t result;
 
+#if (RTTHREAD_VERSION >= RT_VERSION_CHECK(5, 1, 0))
+    rt_kprintf("the priority of thread2 is: %d\n", RT_SCHED_PRIV(tid2).current_priority);
+#else
     rt_kprintf("the priority of thread2 is: %d\n", tid2->current_priority);
-
+#endif
     /* let the lower priority thread run first */
     rt_thread_mdelay(50);
 
@@ -86,7 +106,11 @@ static void thread3_entry(void *parameter)
     rt_tick_t tick;
     rt_err_t result;
 
+#if (RTTHREAD_VERSION >= RT_VERSION_CHECK(5, 1, 0))
+    rt_kprintf("the priority of thread3 is: %d\n", RT_SCHED_PRIV(tid3).current_priority);
+#else
     rt_kprintf("the priority of thread3 is: %d\n", tid3->current_priority);
+#endif
 
     result = rt_mutex_take(mutex, RT_WAITING_FOREVER);
     if (result != RT_EOK)
